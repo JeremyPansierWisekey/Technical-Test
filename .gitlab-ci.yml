@@ -1,0 +1,16 @@
+image: mcr.microsoft.com/dotnet/sdk:6.0
+
+stages:
+  - build
+variables:
+  PATH_SOURCE: "Api/Api.csproj"
+  PATH_TEST: "ApiTests/ApiTests.csproj"
+  PATH_PACKAGE: '/'
+  PATH_BIN: bin/Release/net6.0
+  TAGSNAME: 'DOTNET6_0'
+build-job:
+  stage: build
+  tags:
+    - $TAGSNAME
+  script:
+    - dotnet build $PATH_SOURCE -c Release 
